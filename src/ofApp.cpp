@@ -6,9 +6,7 @@ void ofApp::setup()
     ofDisableAlphaBlending();
     ofEnableDepthTest();
 //    ofEnableLighting();
-    ofDisableArbTex();
-    mySphere = ofSpherePrimitive(320, 100);
-    eyeTex = ofImage("eye2.jpg");
+
 }
 
 //--------------------------------------------------------------
@@ -25,21 +23,28 @@ void ofApp::update()
 //--------------------------------------------------------------
 void ofApp::draw()
 {
-    float t = ofGetElapsedTimef();
-    ofBackground(0, 0, 0);
+
+	int t = (int)ofGetElapsedTimef()%3;
     ofClear(0, 0, 0);
+	switch (t)
+	{
+	case 0:
+    ofBackground(0, 0, 0);
+		break;
+	case 1:
+	ofBackground(255, 100, 0);
+		break;
+	case 2:
+	ofBackground(255,255, 0);
+		break;
+	default:
+		break;
+
+	}
     
     cam.begin();
 
-    ofRotateXRad(PI/8*ofSignedNoise(t*0.7));
-    ofRotateYRad(PI+PI/8*ofSignedNoise(t*0.5));
-//    ofRotateZRad(t/3);
-    
-    eyeTex.bind();
-    mySphere.draw();
-//    mySphere.drawWireframe();
-    eyeTex.unbind();
-    
+	eye.render();
     cam.end();
 }
 

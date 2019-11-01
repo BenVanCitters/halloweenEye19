@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-
+#include "spookyEye.h"
 class ofApp : public ofBaseApp{
 
 	public:
@@ -22,6 +22,6 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
     ofSpherePrimitive mySphere;
         ofImage eyeTex;
-    
+		spookyEye eye;
     ofEasyCam cam;
 };
